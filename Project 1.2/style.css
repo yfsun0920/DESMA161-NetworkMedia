@@ -1,0 +1,65 @@
+/* selector{
+    property: value;
+} */
+
+body {
+
+    background-color: rgb(0, 0, 0);
+    font-family: Helvetica;
+    /* background-image: url("https://cdn.discordapp.com/attachments/1052072404324716605/1095631129744261140/syf_a_chinese_painting_of_a_mountain_scene_with_some_brushstrok_08948882-caeb-4410-93ac-9cc2435f2320.png") */
+}
+
+p {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+
+
+.container {
+    position: relative;
+    margin: auto;
+    width: 75%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #ffffff3a;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+/* .class{
+
+    <p class = "">
+} */
+
+/* #tree{
+    <p id = "tree">
+} */
