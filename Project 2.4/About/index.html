@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--specifying lang helps search engines return language specific results-->
+
+<head>
+    <!--head contains the meta data for the document, its contents are not displayed-->
+    <meta charset="utf-8">
+    <!--sets the character set to work with virtually all characters-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--makes compatible with very early versions of Internet Explorer-->
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <!--Some cellphones and tablets pretend to have a larger screen, messing with graphic design you might do to make your page look good on small screens, this gets thier actual screen size-->
+
+    <meta name="description" content="">
+    <!--other metas like "description" or "author" allows you to add further info to your page, the actual description goes in content-->
+
+    <link rel="Stylesheet" type="text/css" href="../style.css">
+    <!-- for linking to an external file, like a font or a Stylesheet -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <title> About | Yifei Sun </title>
+    <!-- Required! the page's title, does not appear on the page, but appears in tool bar, bookmarks, and is useful for SEO-->
+
+    <!--Styling embebbed into the HTML document. Effects only that document. This is not a best practice, but is fun for messing around. Styles are written 'selector { property: value; }'-->
+
+</head>
+
+<body>
+
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <a href="../index.html">
+                    <h2 class="logo">Yifei Sun</h2>
+                </a>
+            </div>
+            <div class="navbar">
+                <nav>
+                    <ul>
+                        <!-- <li><a href="Game/index.html">Game</a></li>
+                        <li><a href="Photography/index.html">Photography</a></li> -->
+                        <li><a href="index.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>
+            Hi, I am Yifei 🦋
+        </h1>
+
+        <div id="switch">
+            <input type="checkbox" class="switch-input" id="switch-input">
+            <label for="switch-input" class="switch-label"></label>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="column left">
+                    <!-- <img id="image1" src="../Images/photo.png"> -->
+                    <img id="image1" src="../Images/photo.png" class="grid-photo">
+                </div>
+                <div class="column right">
+                    <p>I am currently a Junior from University of California, Los Angeles (UCLA), studying <b> Design |
+                            Media Arts</b> and <b> Economics</b>. I will be graduating in June 2024..</p>
+
+                    <p> Nine years ago I owned my first camera and started to observe the world through lens. I found
+                        my talent in exploring unique angles, and I applied these observations when I started
+                        to learn design. I create experience that eliminates obstacles and conveys emotions.
+                    </p>
+
+                    <p>
+                        <a target="_blank" rel="noopener noreferrer" href="mailto:lilliansyf@g.ucla.edu">Email</a> /
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.instagram.com/yxbuz/">Instagram</a> /
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.linkedin.com/in/yfsun9/">Linkedin</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="container">
+                <ul style="list-style-type:none;">
+                    <li><a href="../index.html"> <- Go Back <- </a></li>
+                </ul>
+            </div>
+
+    </main>
+
+
+    <script>
+        let toggleSwitch = document.querySelector(".switch-input");
+        let image1 = document.querySelector("#image1");
+        let imageDark = "../Images/photo2.png";
+        let imageLight = "../Images/photo.png";
+
+        toggleSwitch.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            if (document.body.classList.contains("dark")) {
+                image1.src = imageDark;
+                localStorage.setItem('theme', 'dark');
+            } else {
+                image1.src = imageLight;
+                localStorage.removeItem('theme');
+            }
+        });
+
+        // Apply the stored theme when the page loads
+        window.onload = function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add("dark");
+                toggleSwitch.checked = true;
+                image1.src = imageDark;
+            } else {
+                document.body.classList.remove("dark");
+                toggleSwitch.checked = false;
+                image1.src = imageLight;
+            }
+        };
+    </script>
+
+</body>
+
+
+</html>

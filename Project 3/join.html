@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--specifying lang helps search engines return language specific results-->
+
+<head>
+    <!--head contains the meta data for the document, its contents are not displayed-->
+    <meta charset="utf-8">
+    <!--sets the character set to work with virtually all characters-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--makes compatible with very early versions of Internet Explorer-->
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <!--Some cellphones and tablets pretend to have a larger screen, messing with graphic design you might do to make your page look good on small screens, this gets thier actual screen size-->
+
+    <meta name="description" content="">
+    <!--other metas like "description" or "author" allows you to add further info to your page, the actual description goes in content-->
+
+
+    <link rel="Stylesheet" type="text/css" href="style.css">
+    <!-- for linking to an external file, like a font or a Stylesheet -->
+
+
+
+    <title> Ubiverse | Guidelines </title>
+    <!-- Required! the page's title, does not appear on the page, but appears in tool bar, bookmarks, and is useful for SEO-->
+
+    <!--Styling embebbed into the HTML document. Effects only that document. This is not a best practice, but is fun for messing around. Styles are written 'selector { property: value; }'-->
+
+
+</head>
+
+<style>
+    body {
+        background-color: #47e745;
+        /* background-image: url(https://wallpaperaccess.com/full/1155011.jpg);
+        background-repeat: no-repeat;
+        background-size: cover; */
+    }
+
+    canvas {
+        /* background-color: #1a1a1a; */
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    mark {
+        padding: 4px 16px;
+        background-color: rgb(85, 0, 255);
+        border-radius: 16px;
+        color: #bbf9e6;
+    }
+
+    #text-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        text-align: center;
+        color: #1a1a1a;
+        /* Optional: Add these lines if you want a background for your text */
+        /* background-color: rgba(255, 255, 255, 0.7); */
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+
+<body>
+    <main>
+
+        <video src="Images/money-video.mp4" autoplay loop playsinline muted class="background-video"></video>
+
+        <center>
+            <canvas>
+            </canvas>
+        </center>
+
+        <div id="text-container">
+            <h2>Share with <mark>5 Friends</mark> <br>to Join UBIVERSE</h2>
+            <a href="index.html" class="btn-primary">Copy Link</a>
+        </div>
+
+
+    </main>
+
+    <script>
+        var canvas = document.querySelector("canvas");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var l = canvas.getContext('2d');
+
+        var img = new Image();
+        img.src = 'Images/QR-code.png'; // replace with your image
+        img.onload = move; // start animation when the image is loaded
+
+        var vx = Math.floor(Math.random() * 10); // increase these values to make the image move faster
+        var vy = Math.floor(Math.random() * 10); // increase these values to make the image move faster
+
+        var imgWidth = 200; // adjust these values to your needs
+        var imgHeight = 200; // adjust these values to your needs
+
+        // Adjust for image dimensions
+        var x = Math.floor(Math.random() * (innerWidth - imgWidth));
+        var y = Math.floor(Math.random() * (innerHeight - imgHeight));
+
+        // This function will do the animation
+        function move() {
+            requestAnimationFrame(move);
+
+            // It clears the specified pixels within
+            // the given rectangle
+            l.clearRect(0, 0, innerWidth, innerHeight);
+
+            // Draw the image
+            l.drawImage(img, x, y, imgWidth, imgHeight);
+
+            // Conditions so that the image bounces
+            // from the edges
+            if (x + imgWidth > innerWidth)
+                vx = 0 - vx;
+
+            if (x < 0)
+                vx = 0 - vx;
+
+            if (y + imgHeight > innerHeight)
+                vy = 0 - vy;
+
+            if (y < 0)
+                vy = 0 - vy;
+
+            x = x + vx;
+            y = y + vy;
+        }
+    </script>
+
+</body>
+
+</html>

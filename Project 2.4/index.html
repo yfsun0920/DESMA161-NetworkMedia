@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--specifying lang helps search engines return language specific results-->
+
+<head>
+    <!--head contains the meta data for the document, its contents are not displayed-->
+    <meta charset="utf-8">
+    <!--sets the character set to work with virtually all characters-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--makes compatible with very early versions of Internet Explorer-->
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <!--Some cellphones and tablets pretend to have a larger screen, messing with graphic design you might do to make your page look good on small screens, this gets thier actual screen size-->
+
+    <meta name="description" content="">
+    <!--other metas like "description" or "author" allows you to add further info to your page, the actual description goes in content-->
+
+    <link rel="Stylesheet" type="text/css" href="style.css">
+    <!-- for linking to an external file, like a font or a Stylesheet -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <title>Yifei Sun | Portfolio</title>
+    <!-- Required! the page's title, does not appear on the page, but appears in tool bar, bookmarks, and is useful for SEO-->
+
+    <!--Styling embebbed into the HTML document. Effects only that document. This is not a best practice, but is fun for messing around. Styles are written 'selector { property: value; }'-->
+
+
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <a href="index.html">
+                    <h2 class="logo">Yifei Sun</h2>
+                </a>
+            </div>
+            <div class="navbar">
+                <nav>
+                    <ul>
+                        <!-- <li><a href="Game/index.html">Game</a></li>
+                        <li><a href="Photography/index.html">Photography</a></li> -->
+                        <li><a href="About/index.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div id="switch">
+            <input type="checkbox" class="switch-input" id="switch-input">
+            <label for="switch-input" class="switch-label">
+            </label>
+        </div>
+
+        <div class="image-container">
+            <img id="display-image" src="Images/Camera_Me.png">
+        </div>
+
+        <div class="button-container">
+            <a href="Photography/AtTheIntersection.html" class="image-button"
+                data-light-href="Photography/AtTheIntersection.html" data-dark-href="Game/AllowNotifications.html"
+                data-light-image="Images/Camera_ATI.png" data-dark-image="Images/GameMonitor_AN.png"
+                data-light-text="At the Intersection" data-dark-text="Allow Notifications">
+                At the Intersection
+            </a>
+            <a href="Photography/ThreeDaysToNewYork.html" class="image-button"
+                data-light-href="Photography/ThreeDaysToNewYork.html" data-dark-href="Game/FlowerBall.html"
+                data-light-image="Images/Camera_NY.png" data-dark-image="Images/GameMonitor_FB.png"
+                data-light-text="Three Days to NY" data-dark-text="Flower Ball">
+                Three Days to NY
+            </a>
+            <a href="Photography/InTheMist.html" class="image-button" data-light-href="Photography/InTheMist.html"
+                data-dark-href="Game/LostHorizon.html" data-light-image="Images/Camera_ITM.png"
+                data-dark-image="Images/GameMonitor_LH.png" data-light-text="In the Mist" data-dark-text="Lost Horizon">
+                In the Mist
+            </a>
+        </div>
+
+
+    </main>
+
+    <!-- <script>
+
+        // // switch button
+        // document.querySelector("#switch-input").addEventListener("click", () => {
+        //     document.body.classList.toggle("dark");
+        // });
+
+        //change image
+        // document.querySelector(".switch-input").addEventListener("click", () => {
+        //     document.body.classList.toggle("dark");
+
+        //     // Get the images
+        //     let imageDisplay = document.querySelector("#imageDisplay");
+
+        //     // If the body has the class "dark", switch to the dark images
+        //     // Otherwise, switch back to the light images
+        //     if (document.body.classList.contains("dark")) {
+        //         imageDisplay.src = "Images/GameMonitor_AN.png";
+        //     } else {
+        //         imageDisplay.src = "Images/Camera_Me.png";
+
+        //     }
+        // });
+
+        //button selections
+        let lightDefault = "Images/Camera_Me.png";
+        let darkDefault = "Images/GameMonitor_AN.png";
+
+        let buttons = document.querySelectorAll('.image-button');
+        let displayImage = document.getElementById('display-image');
+
+        // Function to update the image
+
+        function updateImage(button) {
+            if (document.body.classList.contains("dark")) {
+                displayImage.src = button.dataset.darkImage;
+                button.href = button.dataset.darkHref;
+                button.textContent = button.dataset.darkText;
+            } else {
+                displayImage.src = button.dataset.lightImage;
+                button.href = button.dataset.lightHref;
+                button.textContent = button.dataset.lightText;
+            }
+        }
+        // Function to update the button text
+
+        function updateButtonText() {
+            buttons.forEach(button => {
+                let text;
+                if (document.body.classList.contains("dark")) {
+                    text = button.getAttribute('data-dark-text');
+                } else {
+                    text = button.getAttribute('data-light-text');
+                }
+                button.innerText = text;
+            });
+        }
+
+        // Add event listeners to buttons
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                updateImage(button);
+            });
+
+            button.addEventListener('mouseout', () => {
+                if (document.body.classList.contains("dark")) {
+                    displayImage.src = darkDefault;
+                    button.href = button.dataset.darkHref;
+                } else {
+                    displayImage.src = lightDefault;
+                    button.href = button.dataset.lightHref;
+                }
+            });
+        });
+
+        // Add event listener to theme switch
+        document.querySelector("#switch-input").addEventListener("change", () => {
+            document.body.classList.toggle("dark");
+            if (document.body.classList.contains("dark")) {
+                displayImage.src = darkDefault;
+            } else {
+                displayImage.src = lightDefault;
+            }
+            updateButtonText();  // change button text when theme is switched
+        });
+    </script> -->
+
+    <script>
+        let lightDefault = "Images/Camera_Me.png";
+        let darkDefault = "Images/GameMonitor_Me.png";
+
+        let buttons = document.querySelectorAll('.image-button');
+        let displayImage = document.getElementById('display-image');
+        let toggleSwitch = document.querySelector("#switch-input");
+
+        // Function to update the image
+        function updateImage(button) {
+            if (document.body.classList.contains("dark")) {
+                displayImage.src = button.dataset.darkImage;
+                button.href = button.dataset.darkHref;
+                button.textContent = button.dataset.darkText;
+            } else {
+                displayImage.src = button.dataset.lightImage;
+                button.href = button.dataset.lightHref;
+                button.textContent = button.dataset.lightText;
+            }
+        }
+
+        // Function to update the button text
+        function updateButtonText() {
+            buttons.forEach(button => {
+                let text;
+                if (document.body.classList.contains("dark")) {
+                    text = button.getAttribute('data-dark-text');
+                } else {
+                    text = button.getAttribute('data-light-text');
+                }
+                button.innerText = text;
+            });
+        }
+
+        // Add event listeners to buttons
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                updateImage(button);
+            });
+
+            button.addEventListener('mouseout', () => {
+                if (document.body.classList.contains("dark")) {
+                    displayImage.src = darkDefault;
+                    button.href = button.dataset.darkHref;
+                } else {
+                    displayImage.src = lightDefault;
+                    button.href = button.dataset.lightHref;
+                }
+            });
+        });
+
+        // Add event listener to theme switch
+        toggleSwitch.addEventListener("change", () => {
+            document.body.classList.toggle("dark");
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem('theme', 'dark');
+                displayImage.src = darkDefault;
+            } else {
+                localStorage.removeItem('theme');
+                displayImage.src = lightDefault;
+            }
+            updateButtonText();  // change button text when theme is switched
+        });
+
+        // Apply the stored theme when the page loads
+        window.onload = function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add("dark");
+                toggleSwitch.checked = true;
+                displayImage.src = darkDefault;
+                updateButtonText();  // change button text when theme is loaded
+            }
+        };
+
+
+    </script>
+
+    <script>
+        const theBody = document.querySelector('body');
+
+        function bodyScroll() {
+            theBody.classList.add('hide-scroll');
+        }
+
+    </script>
+
+</body>
+
+
+</html>
